@@ -68,7 +68,7 @@ async function AddUser() {
     });
     setTimeout(() => {
       location.replace("./index.html");
-    }, 2500);
+    }, 1800);
   } catch (error) {
     Swal.fire({
       icon: "error",

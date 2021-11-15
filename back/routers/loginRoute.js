@@ -3,6 +3,8 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const Users = require("../schems/users");
+const Cryptr = require("cryptr");
+const cryptr = new Cryptr(process.env.SECRET_ENCRIPT_KEY);
 
 /**
  * *This route routes to:
@@ -13,9 +15,8 @@ router.post("/", async (req, res, next) => {
   try {
     let user = await Users.findOne({
       username: req.body.username,
-      password: req.body.password,
     });
-    if (user) {
+    if (user && cryptr.decrypt(user.password) === req.body.password) {
       const accessToken = generateAccessToken({ user: req.body.username });
 
       res.cookie("token", accessToken);

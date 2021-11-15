@@ -52,6 +52,13 @@ router.get("/:urlid", async (req, res, next) => {
     if (shorturlObj === null) {
       next({ status: 404, message: "Not found" });
     } else {
+      await Url.findOneAndUpdate(
+        { shorterUrl: req.params.urlid },
+        {
+          $push: { redirectEntriesLog: new Date() },
+          $set: { redirectCount: shorturlObj.redirectCount + 1 },
+        }
+      );
       res.redirect(shorturlObj.origin);
     }
   } catch (error) {

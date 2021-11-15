@@ -15,7 +15,7 @@ router.post("/", async (req, res, next) => {
     if (req.body.username && req.body.password && req.body.email) {
       await Users.create({
         username: req.body.username,
-        password: req.body.password,
+        password: cryptr.encrypt(req.body.password),
         email: req.body.email,
         userCreationDate: new Date(),
       });
