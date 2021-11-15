@@ -1,6 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const Users = require("../schems/users");
+const Cryptr = require("cryptr");
+const cryptr = new Cryptr(process.env.SECRET_ENCRIPT_KEY);
 
 /**
  * *This route routes to:
@@ -17,11 +20,12 @@ router.post("/", async (req, res, next) => {
         userCreationDate: new Date(),
       });
       res.json({ message: "Added successfully" });
+    } else {
+      next({
+        status: 405,
+        message: "Missing 'username' or 'password' or 'email' in body",
+      });
     }
-    next({
-      status: 405,
-      message: "Missing 'username' or 'password' or 'email' in body",
-    });
   } catch (error) {
     next({ status: 404, message: error.message });
   }

@@ -14,6 +14,7 @@
     "clipboard": "2.0.8",
     "cookie-parser": "1.4.5",
     "cors": "2.8.5",
+    "cryptr": "6.0.2",
     "dotenv": "8.6.0",
     "express": "4.17.1",
     "fs": "0.0.1-security",
@@ -21,6 +22,7 @@
     "mongoose": "6.0.12",
     "mongoose-unique-validator": "3.0.0",
     "path": "0.12.7",
+    "sweetalert2": "11.1.10",
     "uniqid": "5.4.0"
   },
   "license": "MIT",

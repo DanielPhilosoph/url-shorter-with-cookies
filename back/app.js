@@ -3,9 +3,11 @@ const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const cookieParser = require("cookie-parser");
 const errorHandler = require("./middleware/errorHandler");
 const shortUrlRouter = require("./routers/shortUrlRoute");
 const registerRouter = require("./routers/registerRoute");
+const authenticateToken = require("./middleware/authenticateToken");
 const loginRouter = require("./routers/loginRoute");
 //const cookieParser = require("cookie-parser");
 const app = express();
@@ -13,6 +15,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 // * MongoDB connection
 const url = `mongodb+srv://daniel_mongo_user:${process.env.PASSWORD}@cluster0.xx3io.mongodb.net/urlShorter?retryWrites=true&w=majority`;
@@ -31,8 +34,14 @@ app.get("/", function (req, res) {
   // serve main path as static file
   res.sendFile(path.resolve("./front/index.html"));
 });
+app.get("/", function (req, res) {
+  res.sendFile(path.resolve("./front/urlshoter.html"));
+});
+app.get("/", function (req, res) {
+  res.sendFile(path.resolve("./front/register.html"));
+});
 
-app.use("/api/shorturl/", shortUrlRouter);
+app.use("/api/shorturl/", authenticateToken, shortUrlRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 

@@ -268,7 +268,7 @@ async function getShortUrl(fullUrl) {
     let response = await axios.post("http://localhost:3000/api/shorturl/", {
       url: fullUrl,
     });
-    return response.data.shorturlId;
+    return response.data.shorturl;
   } catch (error) {
     throw error.response.hasOwnProperty("data")
       ? error.response.data

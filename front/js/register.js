@@ -16,7 +16,7 @@ function onClick(event) {
   let emailRegex = new RegExp(
     /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/
   );
-  let regex = new RegExp(/[A - Za - z0 - 9]/);
+  let regex = new RegExp(/"[a-zA-Z0-9]"/);
   if (usernameInput.value === "") {
     check = false;
     usernameInput.parentElement.dataset.validate = "Username is required";
@@ -48,13 +48,33 @@ function onClick(event) {
   }
 
   if (check) {
-    let isAdded = AddUser();
-    if (isAdded) {
-      location.replace("./index.html");
-    } else {
-      alert("Huge problem");
-    }
+    AddUser();
   }
 }
 
-function AddUser() {}
+async function AddUser() {
+  try {
+    let response = axios.post("http://localhost:3000/register", {
+      username: usernameInput.value,
+      password: passwordInput.value,
+      email: emailInput.value,
+    });
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: `Welcome ${usernameInput.value}!`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    setTimeout(() => {
+      location.replace("./index.html");
+    }, 2500);
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Something went wrong!",
+      footer: `<p>${error.response.message}</p>`,
+    });
+  }
+}
