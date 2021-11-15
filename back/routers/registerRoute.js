@@ -4,7 +4,7 @@ const Users = require("../schems/users");
 
 /**
  * *This route routes to:
- * ? /login
+ * ? /register
  */
 
 router.post("/", async (req, res, next) => {
@@ -26,3 +26,5 @@ router.post("/", async (req, res, next) => {
     next({ status: 404, message: error.message });
   }
 });
+
+module.exports = router;

@@ -15,7 +15,7 @@ router.post("/custom", async (req, res, next) => {
   try {
     if (req.body.url && req.body.custom) {
       await Url.create({
-        username: "?",
+        username: req.body.username,
         origin: req.body.url,
         shorterUrl: req.body.custom,
         redirectCount: 0,
@@ -63,7 +63,7 @@ router.post("/", async (req, res, next) => {
     if (req.body.url) {
       let id = uniqid();
       await Url.create({
-        username: "?",
+        username: req.body.username,
         origin: req.body.url,
         shorterUrl: id,
         redirectCount: 0,
