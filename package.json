@@ -1,0 +1,31 @@
+{
+  "name": "shorturl",
+  "version": "0.0.3",
+  "description": "API project for freeCodeCamp",
+  "main": "index.js",
+  "scripts": {
+    "start": "node back/app.js",
+    "dev": "nodemon back/app.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "0.24.0",
+    "body-parser": "^1.19.0",
+    "clipboard": "2.0.8",
+    "cookie-parser": "1.4.5",
+    "cors": "2.8.5",
+    "dotenv": "8.6.0",
+    "express": "4.17.1",
+    "fs": "0.0.1-security",
+    "mongoose": "6.0.12",
+    "mongoose-unique-validator": "3.0.0",
+    "path": "0.12.7",
+    "uniqid": "5.4.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "27.3.1",
+    "nodemon": "^2.0.4",
+    "puppeteer": "11.0.0"
+  }
+}
