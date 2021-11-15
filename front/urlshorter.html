@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/styles.css">    
+    <script src="./js/urlshorter.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>    
+</head>
+<body>      
+    <div class="parent">         
+        <div class="div1"> 
+            <img src="./images/logo.png" alt="Logo" class="img">
+            <h2 class="headerH">Daniel's URL Shorter</h2>
+        </div>
+        <div class="div2">            
+            <h2 class="headerLabel">Please enter URL</h2>    
+            <br>
+            <table class="urlTable">
+                <tr>                    
+                    <td><label class="inputUrlLabel">URL</label></td>
+                    <td><input type="text" id="url" class="urlInput"></td>
+                    <td><button type="button" id="activate" class="standartButton">activate</button></td>
+                </tr>
+                <tr>
+                    <td class="labelShorter"><label class="inputUrlLabel">Shorter</label></td>
+                    <td><input type="text" class="urlInput" id="result" ></td>
+                    <td><button type="button" id="copyToClip" value="copy" class="standartButton">Copy to clip</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2"><label class="urlError" id="urlError"></label></td>
+                </tr>
+            </table>                               
+        </div>
+        <div class="div3"> </div>
+        <div class="div4"> </div>
+        <div class="div5"></div>
+        <div class="div6"> 
+            <div class="inputDivCustom">
+                <h2 class="headerLabel">Create Custom URL</h2>  
+                <br>
+                <table class="customTable">
+                    <tr>
+                        <td><label class="inputUrlLabel">URL</label></td>
+                        <td><input type="text" id="urlCustomInput" class="urlInputCustom"></td>                        
+                    </tr>
+                    <tr>
+                        <td><label class="inputUrlLabel">Custom endpoint</label></td>
+                        <td><input type="text" id="castonShortUrlInput" class="urlInputCustom"></td>
+                        <td><button type="button" id="activateCustom" class="standartButton">activate</button> </td>
+                    </tr>
+                    <tr>
+                        <td><label class="inputUrlLabel">Shorter</label></td>
+                        <td><input type="text" class="urlInputCustom" id="resultCustom" ></td>
+                        <td><button type="button" id="copyToClipCustom" value="copy" class="standartButton">Copy to clip</button></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="2"><label id="customError" class="customError"></label></td>                        
+                    </tr>
+                </table>               
+            </div>
+        </div>
+        <div class="div7">
+            <div class="inputDivCustom">
+                <h2 class="headerLabel">Statistics</h2>
+                <br>
+                <table class="statistisTable">
+                    <tr>
+                        <td><label class="inputUrlLabel">Short URL end</label></td>
+                        <td><input type="text" id="satisticInput" class="urlInputStatistis">   </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="tdSelectMonth"><label class="inputUrlLabel">Select month</label></td>
+                        <td><input type="month" id="satisticInputMonth" class="urlInputStatistis" min="2020-01" max="2030" value="2021-11">    </td>
+                        <td><button type="button" id="getStatisticsMonth" class="standartButton">Get Statistics This Month</button> </td>
+                        
+                    </tr>
+                    <tr>
+                        <td><label class="inputUrlLabel">Select Year</label></td>
+                        <td><input type="number" id="satisticInputYear" class="urlInputStatistis" min="2020" max="2030" placeholder="2021">   </td>
+                        <td><button type="button" id="getStatisticsYear" class="standartButton">Get Statistics This Year</button> </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="2"><label id="statistisError" class="statistisError"></label></td>
+                    </tr>
+                </table>                   
+            </div>            
+        </div>
+        <div class="div8 hiiden">
+            <div id="chartContainer" style="height: 200px; width: 90%;margin: auto;margin-top: 10px; z-index:-1"></div>  
+        </div>        
+    </div> 
+     
+        <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+      
+</body>
+</html>
