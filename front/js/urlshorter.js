@@ -130,6 +130,22 @@ document
   .addEventListener("click", onStatisticsYearClick);
 
 // ==============================
+// ====== On Load ===============
+// ==============================
+
+window.onload = async (event) => {
+  try {
+    let response = await axios.get(`http://localhost:3000/username`);
+    document.getElementById(
+      "username"
+    ).textContent = `Welcome ${response.data.username}`;
+    console.log(username);
+  } catch (error) {
+    document.getElementById("username").textContent = "*not found*";
+  }
+};
+
+// ==============================
 // ====== Event Listeners =======
 // ==============================
 

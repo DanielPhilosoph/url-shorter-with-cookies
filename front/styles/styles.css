@@ -76,7 +76,8 @@ body {
   grid-area: 4 / 2 / 4 / 5;
 }
 .headerH {
-  margin-left: 80px;
+  margin-left: 40px;
+  float: left;
 }
 .img {
   float: left;
@@ -325,4 +326,10 @@ body {
     opacity: 0;
     border-radius: 50%;
   }
+}
+
+.welcome {
+  color: #6469cf;
+  text-align: right;
+  margin-right: 10px;
 }

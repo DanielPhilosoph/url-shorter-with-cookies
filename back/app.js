@@ -7,6 +7,8 @@ const cookieParser = require("cookie-parser");
 const errorHandler = require("./middleware/errorHandler");
 const shortUrlRouter = require("./routers/shortUrlRoute");
 const registerRouter = require("./routers/registerRoute");
+const usernameRouter = require("./routers/usernameRoute");
+const logoutRouter = require("./routers/logoutRoute");
 const authenticateToken = require("./middleware/authenticateToken");
 const loginRouter = require("./routers/loginRoute");
 //const cookieParser = require("cookie-parser");
@@ -41,9 +43,11 @@ app.get("/", function (req, res) {
   res.sendFile(path.resolve("./front/register.html"));
 });
 
+app.use("/username", authenticateToken, usernameRouter);
 app.use("/api/shorturl/", authenticateToken, shortUrlRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
 
 app.use(errorHandler);
 
