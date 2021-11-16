@@ -165,6 +165,9 @@ async function onActivateClick(event) {
         "Connection problem /" + error;
     } else {
       document.querySelector("#urlError").textContent = error.message;
+      if (error.message === "wrong authorization") {
+        location.replace("./index.html");
+      }
     }
   }
 }
@@ -195,6 +198,9 @@ async function onActivateCustomClick() {
       document.querySelector("#customError").textContent = "Connection problem";
     } else {
       document.querySelector("#customError").textContent = error.message;
+      if (error.message === "wrong authorization") {
+        location.replace("./index.html");
+      }
     }
   }
 }
@@ -219,6 +225,9 @@ async function onStatisticsMonthClick() {
         "Connection problem";
     } else {
       document.querySelector("#statistisError").textContent = error.message;
+      if (error.message === "wrong authorization") {
+        location.replace("./index.html");
+      }
     }
   }
 }
@@ -241,6 +250,9 @@ async function onStatisticsYearClick() {
         "Connection problem";
     } else {
       document.querySelector("#statistisError").textContent = error.message;
+      if (error.message === "wrong authorization") {
+        location.replace("./index.html");
+      }
     }
   }
 }
